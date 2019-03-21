@@ -1,0 +1,42 @@
+var m;
+
+function setup() {
+  createCanvas(400, 400);
+ m = new Mario();
+frameRate(10);
+}
+
+function draw() {
+  background(220);
+  m.show();
+  if(keyIsPressed && keyCode==RIGHT_ARROW){
+  m.derecha();
+}
+}
+
+-------------
+class Mario {
+ constructor() {
+  this.x = width / 2;
+  this.y = height / 2;
+  this.imgs = [];
+  this.frame = 0;
+  for (var i = 0; i < 4; i++) {
+   this.imgs[i] = loadImage('MarioR/' + i + '.gif');
+  }
+ }
+
+ show() {
+  imageMode(CENTER);
+  image(this.imgs[this.frame],this.x,this.y);
+  
+  }
+derecha(){
+this.frame++;
+this.x = this.x + 10;
+  if(this.frame > 3){
+  this.frame = 0;
+  
+  }
+}
+}
